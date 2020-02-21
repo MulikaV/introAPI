@@ -13,11 +13,15 @@ class PostController extends Controller
     {
         $sortBy = $request->input('sortBy');
 
-        if (isset($sortBy)){
+        if (isset($sortBy)) {
             $order = $request->input('order');
-            return Post::with('user')->orderBy($sortBy,$order)->get();
-        } else{
-            return Post::with('user')->get();
+            if ($order && $order == 'desc') {
+                return Post::all()->sortByDesc($sortBy)->values();
+            } else {
+                return Post::all()->sortBy($sortBy)->values();
+            }
+        } else {
+            return Post::all();
         }
     }
 
@@ -28,6 +32,13 @@ class PostController extends Controller
         return response()->json($post, 201);
     }
 
+    public function update(Request $request, $id)
+    {
+        $post = Post::find($id);
+        $post->edit($request->toArray());
+        return response()->json($post, 201);
+    }
+
     public function show($id)
     {
         Post::find($id);
@@ -35,6 +46,6 @@ class PostController extends Controller
 
     public function destroy($id)
     {
-        Post::find($id) ->remove();
+        Post::find($id)->remove();
     }
 }
