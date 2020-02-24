@@ -2,51 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePost;
 use App\Post;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
 
+
     public function index(Request $request)
     {
-        $sortBy = $request->input('sortBy', null);
-        $order = $request->input('order', null);
-
-        $posts = Post::with('user');
-
-        if ($sortBy && $order) {
-            $posts->orderBy($sortBy, $order);
-        } else if ($sortBy) {
-            $posts->orderBy($sortBy);
-        }
-
-        return $posts->get();
-
+       return Post::getAllPosts($request);
     }
 
-    public function store(Request $request)
+    public function store(StorePost $request)
     {
-
-        $post = Post::create($request->toArray());
-        return response()->json($post, 201);
+        Post::create($request->toArray());
     }
 
-    public function update(Request $request, $id)
+    public function update(StorePost $request, Post $post)
     {
-        $post = Post::find($id);
         $post->update($request->toArray());
-
     }
 
-    public function show($id)
+    public function destroy(Post $post)
     {
-        Post::find($id);
-    }
-
-    public function destroy($id)
-    {
-        Post::find($id)->delete();
+        $post->delete();
     }
 }
