@@ -15,6 +15,8 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id')->default('1');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->char('text');
             $table->timestamps();
         });
