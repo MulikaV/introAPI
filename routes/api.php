@@ -21,10 +21,11 @@ Route::resource('posts', 'PostController')
 Route::resource('posts', 'PostController')
     ->only('index');
 
+
 Route::group(['namespace' => 'Api'], function () {
     Route::group(['namespace' => 'Auth'], function () {
         Route::post('register', 'RegisterController');
-        Route::post('login', 'LoginController');
+        Route::post('login', 'LoginController')->name('login');
         Route::post('logout', 'LogoutController')->middleware('auth:api');
     });
 });

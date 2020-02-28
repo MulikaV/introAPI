@@ -1,12 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $fillable = ['text'];
+    protected $fillable = ['text','user_id'];
 
     public function user()
     {
@@ -17,9 +17,9 @@ class Post extends Model
     {
         $sortBy = request()->sortBy;
         if ($sortBy) {
-            return static::all()->sortByDesc($sortBy)->values();
+            return static::with('user')->orderBy($sortBy,'desc')->get();
         }
-        return static::all();
+        return static::with('user')->get();
     }
 
 }

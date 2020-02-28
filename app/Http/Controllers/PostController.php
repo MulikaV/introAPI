@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 
-use App\Http\Requests\StorePost;
-use App\Post;
+use App\Http\Requests\Post\StorePost;
+use App\Models\Post;
 
 class PostController extends Controller
 {
@@ -18,7 +18,7 @@ class PostController extends Controller
 
     public function store(StorePost $request)
     {
-        $post = Post::create($request->only('text'));
+        $post = Post::create($request->all());
         return response()->json($post, 200);
 
     }
