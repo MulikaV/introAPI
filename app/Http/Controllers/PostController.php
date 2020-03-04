@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-
-
-use App\Http\Requests\Api\Post\PostRequest;
+use App\Http\Requests\PostRequest;
 use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -18,7 +17,7 @@ class PostController extends Controller
 
     public function store(PostRequest $request)
     {
-            $post = auth()->user()->posts()->create($request->all());
+            $post = Auth::user()->posts()->create($request->all());
             return response()->json($post, 201);
     }
 

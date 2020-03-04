@@ -14,18 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware' => 'auth:api'], function() {
+Route::group(['middleware' => 'auth:api'], function () {
     Route::resource('posts', 'PostController')
         ->except('index');
+    Route::post('logout', 'AuthController@logout');
+    Route::post('refresh', 'AuthController@refresh');
+    Route::post('me', 'AuthController@me');
 });
 
 Route::get('posts', 'PostController@index');
+Route::post('login', 'AuthController@login');
+Route::post('register', 'AuthController@register');
 
 
-Route::group(['namespace' => 'Api'], function () {
-    Route::group(['namespace' => 'Auth'], function () {
-        Route::post('register', 'RegisterController');
-        Route::post('login', 'LoginController')->name('login');
-        Route::post('logout', 'LogoutController')->middleware('auth:api');
-    });
-});
+
+
+
+

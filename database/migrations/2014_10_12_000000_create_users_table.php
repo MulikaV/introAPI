@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
