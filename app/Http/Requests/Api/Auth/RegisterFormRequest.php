@@ -36,10 +36,10 @@ class RegisterFormRequest extends FormRequest
             'name' => 'Name is required',
             'email.required' => 'The email is required.',
             'email.email' => 'The email needs to have a valid format.',
-            'email.exists' => 'This email is already registered in the system.',
             'email.unique' => 'This email is already registered in the system.',
             'password.required' => 'The password is required',
             'password.size' => 'The password must be at least 6 characters.',
+            'password.confirmed' => 'Password confirmation does not match.',
             'password.regex' => 'Your password should contain at-least 1 Uppercase, 1 Lowercase and 1 Numeric character.'
         ];
     }

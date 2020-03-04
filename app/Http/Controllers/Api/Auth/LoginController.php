@@ -19,14 +19,14 @@ class LoginController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        if (!auth()->attempt($credentials)) {
+        if (!auth()->guard('web')->attempt($credentials)) {
             return response()->json([
                 'message' => 'You cannot sign with those credentials',
                 'errors' => 'Unauthorised'
             ], 401);
         }
 
-        $user = auth()->user();
+        $user = auth()->guard('web')->user();
         $token = $user->createToken('token');
 
         $token->token->expires_at = $request->remember_me ?
