@@ -14,12 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('posts', 'PostController')
-    ->middleware('auth:api')
-    ->except('index');
+Route::group(['middleware' => 'auth:api'], function() {
+    Route::resource('posts', 'PostController')
+        ->except('index');
+});
 
-Route::resource('posts', 'PostController')
-    ->only('index');
+Route::get('posts', 'PostController@index');
 
 
 Route::group(['namespace' => 'Api'], function () {

@@ -29,4 +29,18 @@ class RegisterFormRequest extends FormRequest
             'password' => ['required', 'string', 'min:6','regex:/^.*(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).*$/','confirmed'],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name' => 'Name is required',
+            'email.required' => 'The email is required.',
+            'email.email' => 'The email needs to have a valid format.',
+            'email.exists' => 'This email is already registered in the system.',
+            'email.unique' => 'This email is already registered in the system.',
+            'password.required' => 'The password is required',
+            'password.size' => 'The password must be at least 6 characters.',
+            'password.regex' => 'Your password should contain at-least 1 Uppercase, 1 Lowercase and 1 Numeric character.'
+        ];
+    }
 }

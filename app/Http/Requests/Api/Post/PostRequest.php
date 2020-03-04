@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Post;
+namespace App\Http\Requests\Api\Post;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StorePost extends FormRequest
+class PostRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,14 @@ class StorePost extends FormRequest
     public function rules()
     {
         return [
-            'text' =>'required|max:500',
-            'user_id' => 'required'
+            'text' =>'required|max:500'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'text.required' => 'Text is required.',
         ];
     }
 }

@@ -3,35 +3,36 @@
 namespace App\Http\Controllers;
 
 
-use App\Http\Requests\Post\StorePost;
+
+use App\Http\Requests\Api\Post\PostRequest;
 use App\Models\Post;
 
 class PostController extends Controller
 {
 
-
-
     public function index()
     {
-        return Post::getAllPosts();
+        return Post::with('user')->latest()->get();
     }
 
-    public function store(StorePost $request)
-    {
-        $post = Post::create($request->all());
-        return response()->json($post, 200);
 
+    public function store(PostRequest $request)
+    {
+            $post = auth()->user()->posts()->create($request->all());
+            return response()->json($post, 201);
     }
 
-    public function update(StorePost $request, Post $post)
+    public function update(PostRequest $request, Post $post)
     {
+        $this->authorize('update', $post);
 
-        $post->update($request->toArray());
-        return response()->json($post, 200);
+        $post->update($request->all());
+        return response()->json($post, 201);
     }
 
     public function destroy(Post $post)
     {
+        $this->authorize('delete', $post);
         $post->delete();
     }
 }
