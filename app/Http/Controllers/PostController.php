@@ -33,5 +33,11 @@ class PostController extends Controller
     {
         $this->authorize('delete', $post);
         $post->delete();
+
+        return response()->json([
+            'message' => 'Post successfully deleted'
+        ]);
     }
+
+
 }

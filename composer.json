@@ -12,10 +12,7 @@
         "doctrine/dbal": "^2.10",
         "fideloper/proxy": "^4.0",
         "fruitcake/laravel-cors": "^1.0",
-        "laravel/framework": "^6.2",id": 10,
-    "name": "test",
-    "email": "test5@test.test",
-    "created_at": "2020-03-04 13:31:26",
+        "laravel/framework": "^6.2",
         "laravel/tinker": "^2.0",
         "tymon/jwt-auth": "^1.0.0"
     },

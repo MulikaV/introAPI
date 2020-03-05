@@ -24,14 +24,14 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            'text' =>'required|max:500'
+            'body' =>'required|max:500'
         ];
     }
 
     public function messages()
     {
         return [
-            'text.required' => 'Text is required.',
+            'body.required' => 'Message is required.',
         ];
     }
 }
