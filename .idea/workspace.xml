@@ -2,13 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3717902-84af-49e8-8526-9fddf2667316" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/ConfirmPasswordController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/ForgotPasswordController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/ResetPasswordController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PostController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/PostRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/PostRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Post.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_20_094931_create_posts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_20_094931_create_posts_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,9 +187,6 @@
       <item itemvalue="PHPUnit.phpunit.xml" />
     </list>
   </component>
-  <component name="ServiceViewManager">
-    <option name="showServicesTree" value="false" />
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -198,7 +202,7 @@
       <workItem from="1582796151389" duration="12344000" />
       <workItem from="1582879498390" duration="15359000" />
       <workItem from="1583226725347" duration="8574000" />
-      <workItem from="1583395741766" duration="5859000" />
+      <workItem from="1583395741766" duration="18594000" />
     </task>
     <servers />
   </component>
@@ -269,6 +273,10 @@
       <screen x="70" y="27" width="2490" height="1413" />
     </state>
     <state x="898" y="394" width="824" height="691" key="#CLI_Interpreters/70.27.2490.1413@70.27.2490.1413" timestamp="1583227936611" />
+    <state x="910" y="395" width="800" height="684" key="#Inspections" timestamp="1583486127371">
+      <screen x="70" y="27" width="2490" height="1413" />
+    </state>
+    <state x="910" y="395" width="800" height="684" key="#Inspections/70.27.2490.1413@70.27.2490.1413" timestamp="1583486127371" />
     <state x="773" y="391" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583228127394">
       <screen x="70" y="27" width="2490" height="1413" />
     </state>
@@ -289,6 +297,10 @@
       <screen x="70" y="27" width="2490" height="1413" />
     </state>
     <state x="881" y="259" width="857" height="955" key="CommitChangelistDialog2/70.27.2490.1413@70.27.2490.1413" timestamp="1583311074569" />
+    <state x="170" y="127" width="2290" height="1213" key="DiffContextDialog" timestamp="1583489811731">
+      <screen x="70" y="27" width="2490" height="1413" />
+    </state>
+    <state x="170" y="127" width="2290" height="1213" key="DiffContextDialog/70.27.2490.1413@70.27.2490.1413" timestamp="1583489811731" />
     <state x="1098" y="491" width="424" height="491" key="FileChooserDialogImpl" timestamp="1582204861171">
       <screen x="70" y="27" width="2490" height="1413" />
     </state>
@@ -321,18 +333,22 @@
       <screen x="70" y="27" width="2490" height="1413" />
     </state>
     <state x="804" y="368" width="1022" height="737" key="SettingsEditor/70.27.2490.1413@70.27.2490.1413" timestamp="1583228102207" />
+    <state x="1058" y="419" width="503" height="635" key="VcsDiffUtil.ChangesDialog" timestamp="1583489818437">
+      <screen x="70" y="27" width="2490" height="1413" />
+    </state>
+    <state x="1058" y="419" width="503" height="635" key="VcsDiffUtil.ChangesDialog/70.27.2490.1413@70.27.2490.1413" timestamp="1583489818437" />
     <state x="971" y="561" key="com.intellij.ide.util.TipDialog" timestamp="1583226725508">
       <screen x="70" y="27" width="2490" height="1413" />
     </state>
     <state x="971" y="561" key="com.intellij.ide.util.TipDialog/70.27.2490.1413@70.27.2490.1413" timestamp="1583226725508" />
-    <state x="960" y="300" width="709" height="867" key="find.popup" timestamp="1583153635167">
+    <state x="960" y="300" width="709" height="867" key="find.popup" timestamp="1583483680392">
       <screen x="70" y="27" width="2490" height="1413" />
     </state>
-    <state x="960" y="300" width="709" height="867" key="find.popup/70.27.2490.1413@70.27.2490.1413" timestamp="1583153635167" />
-    <state x="1041" y="396" width="537" height="681" key="git4idea.branch.GitSmartOperationDialog" timestamp="1582901490179">
+    <state x="960" y="300" width="709" height="867" key="find.popup/70.27.2490.1413@70.27.2490.1413" timestamp="1583483680392" />
+    <state x="1041" y="396" width="537" height="681" key="git4idea.branch.GitSmartOperationDialog" timestamp="1583489750968">
       <screen x="70" y="27" width="2490" height="1413" />
     </state>
-    <state x="1041" y="396" width="537" height="681" key="git4idea.branch.GitSmartOperationDialog/70.27.2490.1413@70.27.2490.1413" timestamp="1582901490179" />
+    <state x="1041" y="396" width="537" height="681" key="git4idea.branch.GitSmartOperationDialog/70.27.2490.1413@70.27.2490.1413" timestamp="1583489750968" />
     <state x="979" y="342" key="run.anything.popup" timestamp="1583156820143">
       <screen x="70" y="27" width="2490" height="1413" />
     </state>

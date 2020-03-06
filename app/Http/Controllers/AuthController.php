@@ -22,11 +22,14 @@ class AuthController extends Controller
         $this->middleware('auth:api', ['except' => ['login','register']]);
     }
 
+
+
+
+
     /**
      * Get a JWT token via given credentials.
      *
-     * @param Request $request
-     *
+     * @param LoginFormRequest $request
      * @return JsonResponse
      */
     public function login(LoginFormRequest $request)
@@ -44,6 +47,12 @@ class AuthController extends Controller
     }
 
 
+    /**
+     * Create a User
+     *
+     * @param RegisterFormRequest $request
+     * @return JsonResponse
+     */
     public function register(RegisterFormRequest $request)    {
 
 
