@@ -5,11 +5,12 @@ namespace App\Models;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+
 /**
  * Class User
  * @package App\Models
  * @property int id
- * @property string name
+ * @property string username
  * @property string email
  * @property string password
  */
@@ -19,7 +20,7 @@ class User extends Authenticatable implements JWTSubject
 
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'username', 'email', 'password',
     ];
 
     protected $hidden = [
@@ -29,7 +30,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function posts()
     {
-        return $this-> hasMany(Post::class);
+        return $this->hasMany(Post::class, 'author_id');
     }
 
 

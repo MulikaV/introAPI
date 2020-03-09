@@ -24,22 +24,21 @@ class RegisterFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email:filter', 'unique:users,email'],
-            'password' => ['required', 'string', 'min:6','regex:/^.*(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).*$/','confirmed'],
+            'password' => ['required', 'string', 'min:6','regex:/^.*(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).*$/'],
         ];
     }
 
     public function messages()
     {
         return [
-            'name' => 'Name is required',
+            'username' => 'Username is required',
             'email.required' => 'The email is required.',
             'email.email' => 'The email needs to have a valid format.',
             'email.unique' => 'This email is already registered in the system.',
             'password.required' => 'The password is required',
             'password.size' => 'The password must be at least 6 characters.',
-            'password.confirmed' => 'Password confirmation does not match.',
             'password.regex' => 'Your password should contain at-least 1 Uppercase, 1 Lowercase and 1 Numeric character.'
         ];
     }

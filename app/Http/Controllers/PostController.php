@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
-use Illuminate\Auth\Access\AuthorizationException;
+use Exception;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PostController extends Controller
 {
@@ -18,9 +21,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return Post::with('user')->latest()->paginate(5);
+        return Post::with('user:id,username')->latest()->paginate(13);
     }
-
 
     /**
      * Store posts
@@ -30,43 +32,45 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-            $post = Auth::user()->posts()->create($request->all());
-            return response()->json($post, 201);
+        $user = $request->user();
+        return $user->posts()->save(new Post($request->all()));
     }
 
     /**
-     * Updating Posts
-     *
+     * Update posts
      *
      * @param PostRequest $request
-     * @param Post $post
-     * @return JsonResponse
-     * @throws AuthorizationException
+     * @param $id
+     * @return Exception|JsonResponse
      */
-    public function update(PostRequest $request, Post $post)
+    public function update(PostRequest $request, $id)
     {
-        $this->authorize('update', $post);
+        $user = $request->user();
+
+        if (!$post = $user->posts()->find($id)) {
+            throw new NotFoundHttpException('This user can\'t modify this post');
+        }
 
         $post->update($request->all());
-        return response()->json($post, 201);
+        return $post;
     }
 
-    /**Deleting Posts
+    /**
+     * Delete Posts
      *
-     *
-     * @param Post $post
-     * @return JsonResponse
-     * @throws AuthorizationException
-     * @throws \Exception
+     * @param Request $request
+     * @param $id
+     * @return void
      */
-    public function destroy(Post $post)
+    public function destroy(Request $request, $id)
     {
-        $this->authorize('delete', $post);
-        $post->delete();
+        $user = $request->user();
 
-        return response()->json([
-            'message' => 'Post successfully deleted'
-        ]);
+        if (!$post = $user->posts()->find($id)) {
+            throw new NotFoundHttpException('This user can\'t modify this post');
+        }
+
+        $post->delete();
     }
 
 

@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LoginFormRequest;
 use App\Http\Requests\RegisterFormRequest;
 use App\Models\User;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
@@ -21,10 +21,6 @@ class AuthController extends Controller
     {
         $this->middleware('auth:api', ['except' => ['login','register']]);
     }
-
-
-
-
 
     /**
      * Get a JWT token via given credentials.
@@ -51,43 +47,38 @@ class AuthController extends Controller
      * Create a User
      *
      * @param RegisterFormRequest $request
-     * @return JsonResponse
+     * @return JsonResponse|void
      */
     public function register(RegisterFormRequest $request)    {
 
-
-        User::create(array_replace(
-            $request->only('name', 'email'),
+       $user = User::create(array_replace(
+            $request->only('username', 'email'),
             ['password' => bcrypt($request->password)]
         ));
 
-        return response()->json([
-            'message' => 'You were successfully registered. Use your email and password to sign in.'
-        ], 200);
-
-
+       $token = $this->guard()->login($user);
+        return $this->respondWithToken($token);
     }
 
     /**
      * Get the authenticated User
      *
-     * @return JsonResponse
+     * @return Authenticatable|JsonResponse
      */
     public function me()
     {
-        return response()->json($this->guard()->user());
+        return $this->guard()->user();
     }
 
     /**
      * Log the user out (Invalidate the token)
      *
-     * @return JsonResponse
+     * @return void
      */
     public function logout()
     {
         $this->guard()->logout();
 
-        return response()->json(['message' => 'Successfully logged out']);
     }
 
     /**
@@ -111,8 +102,7 @@ class AuthController extends Controller
     {
         return response()->json([
             'token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => $this->guard()->factory()->getTTL() * 60
+            'expires_in' => now()->addHour()->timestamp
         ]);
     }
 
