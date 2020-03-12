@@ -8,8 +8,7 @@ use Exception;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Symfony\Component\HttpKernel\Exception\HttpException;
+use Illuminate\Validation\UnauthorizedException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PostController extends Controller
@@ -48,7 +47,7 @@ class PostController extends Controller
         $user = $request->user();
 
         if (!$post = $user->posts()->find($id)) {
-            throw new NotFoundHttpException('This user can\'t modify this post');
+            throw new UnauthorizedException('This user can\'t modify this post');
         }
 
         $post->update($request->all());
@@ -67,7 +66,7 @@ class PostController extends Controller
         $user = $request->user();
 
         if (!$post = $user->posts()->find($id)) {
-            throw new NotFoundHttpException('This user can\'t modify this post');
+            throw new UnauthorizedException('This user can\'t modify this post');
         }
 
         $post->delete();

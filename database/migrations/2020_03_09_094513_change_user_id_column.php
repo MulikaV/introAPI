@@ -28,7 +28,8 @@ class ChangeUserIdColumn extends Migration
     public function down()
     {
         Schema::table('posts', function (Blueprint $table) {
-            Schema::dropIfExists('posts');
+            $table->renameColumn('author_id','user_id');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 }
